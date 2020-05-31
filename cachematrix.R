@@ -5,15 +5,15 @@
 
 makeCacheMatrix <- function(x = matrix()) {
     inverse <- NULL                             ## initialize inverse as NULL; will hold value of matrix inverse
-    set <- function(y) {                    ## define the set function to assign new
-    x <<- y                             ## value of matrix in parent environment
+    set <- function(y) {                   
+    x <<- y                             
     inverse <<- NULL                        ## if there is a new matrix, reset inverse to NULL
     }
     get <- function() x                     ## define the get fucntion - returns value of the matrix argument
 
-    setinverse <- function(inverse) inv <<- inverse  ## assigns value of inv in parent environment
-    getinverse <- function() inv                     ## gets the value of inv where called
-    list(set = set, get = get, setinverse = setinverse, getinverse = getinverse)  ## you need this in order to refe
+    setinverse <- function(inverse) inv <<- inverse  
+    getinverse <- function() inv                     
+    list(set = set, get = get, setinverse = setinverse, getinverse = getinverse)  ## you need this in order to refer
                                                                              ## to the functions with the $ operator
 }
 
