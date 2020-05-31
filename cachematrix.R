@@ -11,8 +11,8 @@ makeCacheMatrix <- function(x = matrix()) {
     }
     get <- function() x                     ## define the get fucntion - returns value of the matrix argument
 
-    setinverse <- function(inverse) inv <<- inverse  ## assigns value of inv in parent environment
-    getinverse <- function() inv                     ## gets the value of inv where called
+    setinverse <- function(inverse) inverse <<- inverse  ## assigns value of inv in parent environment
+    getinverse <- function() inverse                     ## gets the value of inv where called
     list(set = set, get = get, setinverse = setinverse, getinverse = getinverse)  ## you need this in order to refe
                                                                              ## to the functions with the $ operator
 }
@@ -23,12 +23,12 @@ makeCacheMatrix <- function(x = matrix()) {
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
     inverse <- x$getinverse()
-    if(!is.null(inv)) {
+    if(!is.null(inverse)) {
         message("getting cached data")
-        return(inv)
+        return(inverse)
     }
     data <- x$get()
     inverse <- solve(data, ...)
-    x$setinverse(inv)
+    x$setinverse(inverse)
     inverse
 }
